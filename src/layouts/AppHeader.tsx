@@ -271,7 +271,7 @@ export function AppHeader() {
 
         <Box sx={{ flexGrow: 1 }} />
 
-        <NoSsr>
+        {/* <NoSsr>
           <StyledBadge
             invisible={visitedSwitch}
             variant="dot"
@@ -320,7 +320,7 @@ export function AppHeader() {
               </SvgIcon>
             </Button>
           </StyledBadge>
-        </NoSsr>
+        </NoSsr> */}
 
         {readOnlyMode ? (
           <Button
