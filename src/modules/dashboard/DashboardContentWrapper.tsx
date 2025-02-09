@@ -29,7 +29,7 @@ export const DashboardContentWrapper = ({ isBorrow }: DashboardContentWrapperPro
   const downToLg = useMediaQuery(breakpoints.down('lg'));
 
   return (
-    <Box>
+    <Box style={{ backgroundImage: 'url(/illustration_borrow.png)', backgroundPosition: '0% 20%', backgroundRepeat: 'no-repeat' }}>
       {currentMarketData.chainId === ChainId.polygon && !currentMarketData.v3}
       <Box
         sx={{
@@ -41,7 +41,7 @@ export const DashboardContentWrapper = ({ isBorrow }: DashboardContentWrapperPro
         <Box
           sx={{
             position: 'relative',
-
+            
             display: { xs: isBorrow ? 'none' : 'block', lg: 'block' },
             width: paperWidth,
           }}
