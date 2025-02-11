@@ -56,7 +56,7 @@ export const networkConfigs: Record<string, BaseNetworkConfig> = {
   [ChainId.sepolia]: {
     name: 'Ethereum Sepolia',
     publicJsonRPCUrl: [
-      'https://eth-sepolia.alchemyapi.io/v2/KkSP6BXBPZ815jIETqF6Ov23BmrFi0eM',
+      `https://eth-sepolia.alchemyapi.io/v2/${process.env.NEXT_PUBLIC_SEPOLIA_ALCHEMY_API_KEY}`,
       'https://rpc.sepolia.org',
       'https://rpc2.sepolia.org',
       'https://rpc.sepolia.online',
@@ -90,7 +90,7 @@ export const networkConfigs: Record<string, BaseNetworkConfig> = {
   },
   [ChainId.mainnet]: {
     name: 'Ethereum',
-    privateJsonRPCUrl: 'https://eth-mainnet.g.alchemy.com/v2/ZiMMq2478EVIEJdsxC5dMal_ccQwtb31',
+    privateJsonRPCUrl: `https://eth-mainnet.g.alchemy.com/v2/${process.env.NEXT_PUBLIC_MAINNET_ALCHEMY_API_KEY}`,
     publicJsonRPCUrl: [
       'https://rpc.ankr.com/eth',
       'https://rpc.flashbots.net',
