@@ -7,7 +7,6 @@ import { useShallow } from 'zustand/shallow';
 
 import { Link } from '../../components/primitives/Link';
 import { navigation } from '../../ui-config/menu-items';
-import { MoreMenu } from '../MoreMenu';
 
 interface NavItemsProps {
   setOpen?: (value: boolean) => void;
@@ -92,10 +91,6 @@ export const NavItems = ({ setOpen }: NavItemsProps) => {
             )}
           </ListItem>
         ))}
-
-      <ListItem sx={{ display: { xs: 'none', md: 'flex' }, width: 'unset' }} disablePadding>
-        {/* <MoreMenu /> */}
-      </ListItem>
     </List>
   );
 };

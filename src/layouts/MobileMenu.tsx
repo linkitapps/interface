@@ -1,13 +1,11 @@
 import { MenuIcon } from '@heroicons/react/outline';
 import { Trans } from '@lingui/macro';
-import { useLingui } from '@lingui/react';
 import {
   Box,
   Button,
   Divider,
   List,
   ListItem,
-  ListItemIcon,
   ListItemText,
   SvgIcon,
   Typography,
@@ -17,7 +15,6 @@ import { useModalContext } from 'src/hooks/useModal';
 import { PROD_ENV } from 'src/utils/marketsAndNetworksConfig';
 
 import { Link } from '../components/primitives/Link';
-import { moreNavigation } from '../ui-config/menu-items';
 import { DarkModeSwitcher } from './components/DarkModeSwitcher';
 import { DrawerWrapper } from './components/DrawerWrapper';
 import { LanguageListItem, LanguagesList } from './components/LanguageSwitcher';
@@ -46,7 +43,6 @@ const MenuItemsWrapper = ({ children, title }: { children: ReactNode; title: Rea
 );
 
 export const MobileMenu = ({ open, setOpen, headerHeight }: MobileMenuProps) => {
-  const { i18n } = useLingui();
   const [isLanguagesListOpen, setIsLanguagesListOpen] = useState(false);
   const { openReadMode } = useModalContext();
 
@@ -104,15 +100,6 @@ export const MobileMenu = ({ open, setOpen, headerHeight }: MobileMenuProps) => 
                     <Trans>Migrate to Aave V3</Trans>
                   </ListItemText>
                 </ListItem>
-                {moreNavigation.map((item, index) => (
-                  <ListItem component={Link} href={item.link} sx={{ color: '#F1F1F3' }} key={index}>
-                    <ListItemIcon sx={{ minWidth: 'unset', mr: 3 }}>
-                      <SvgIcon sx={{ fontSize: '20px', color: '#F1F1F3' }}>{item.icon}</SvgIcon>
-                    </ListItemIcon>
-
-                    <ListItemText>{i18n._(item.title)}</ListItemText>
-                  </ListItem>
-                ))}
               </List>
             </MenuItemsWrapper>
           </>

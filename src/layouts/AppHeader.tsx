@@ -1,15 +1,8 @@
-import {
-  InformationCircleIcon,
-  SparklesIcon,
-  SwitchHorizontalIcon,
-} from '@heroicons/react/outline';
+import { InformationCircleIcon } from '@heroicons/react/outline';
 import { Trans } from '@lingui/macro';
 import {
-  Badge,
   Button,
-  NoSsr,
   Slide,
-  styled,
   SvgIcon,
   Typography,
   useMediaQuery,
@@ -39,39 +32,6 @@ interface Props {
   children: React.ReactElement;
 }
 
-const StyledBadge = styled(Badge)(({ theme }) => ({
-  '& .MuiBadge-badge': {
-    top: '2px',
-    right: '2px',
-    borderRadius: '20px',
-    width: '10px',
-    height: '10px',
-    backgroundColor: `${theme.palette.secondary.main}`,
-    color: `${theme.palette.secondary.main}`,
-    '&::after': {
-      position: 'absolute',
-      top: 0,
-      left: 0,
-      width: '100%',
-      height: '100%',
-      borderRadius: '50%',
-      animation: 'ripple 1.2s infinite ease-in-out',
-      border: '1px solid currentColor',
-      content: '""',
-    },
-  },
-  '@keyframes ripple': {
-    '0%': {
-      transform: 'scale(.8)',
-      opacity: 1,
-    },
-    '100%': {
-      transform: 'scale(2.4)',
-      opacity: 0,
-    },
-  },
-}));
-
 function HideOnScroll({ children }: Props) {
   const { breakpoints } = useTheme();
   const md = useMediaQuery(breakpoints.down('md'));
@@ -84,18 +44,10 @@ function HideOnScroll({ children }: Props) {
   );
 }
 
-const SWITCH_VISITED_KEY = 'switchVisited';
-
 export function AppHeader() {
   const { breakpoints } = useTheme();
   const md = useMediaQuery(breakpoints.down('md'));
   const sm = useMediaQuery(breakpoints.down('sm'));
-  const smd = useMediaQuery('(max-width:1120px)');
-
-  const [visitedSwitch, setVisitedSwitch] = useState(() => {
-    if (typeof window === 'undefined') return true;
-    return Boolean(localStorage.getItem(SWITCH_VISITED_KEY));
-  });
 
   const [mobileDrawerOpen, setMobileDrawerOpen, currentMarketData] = useRootStore(
     useShallow((state) => [
@@ -105,7 +57,7 @@ export function AppHeader() {
     ])
   );
 
-  const { openSwitch, openBridge, openReadMode } = useModalContext();
+  const { openReadMode } = useModalContext();
   const { readOnlyMode } = useWeb3Context();
   const [walletWidgetOpen, setWalletWidgetOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -141,16 +93,6 @@ export function AppHeader() {
     localStorage.removeItem('forkRPCUrl');
     // Set window.location to trigger a page reload when navigating to the the dashboard
     window.location.href = '/';
-  };
-
-  const handleSwitchClick = () => {
-    localStorage.setItem(SWITCH_VISITED_KEY, 'true');
-    setVisitedSwitch(true);
-    openSwitch();
-  };
-
-  const handleBridgeClick = () => {
-    openBridge();
   };
 
   const testnetTooltip = (
